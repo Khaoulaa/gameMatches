@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="content content-one" *ngIf="!showGame">
+     <p class="_bold">Entrez les informations du jeux </p>
+    <form [formGroup]="formGame" (ngSubmit)="startGame(formGame.value)">
+     <div class="row section-one">
+        <div class="col-md-4 col-sm-4">
+          <p class="_small-bold">Joueur 1</p>
+          <div class="md-form">
+              <input mdbInputDirective type="text" id="input1" class="form-control" formControlName="pseudo1" required>
+              <label for="form1" class="">Pseudo joueur 1</label>
+          </div>
+         </div>
+
+         <div class="col-md-4 col-sm-4 ">
+            <p class="_small-bold">Joueur 2</p>
+            <div class="md-form">
+                <input mdbInputDirective type="text" id="input2" class="form-control" formControlName="pseudo2" required>
+                <label for="form1" class="">Pseudo joueur 2</label>
+            </div>
+           </div>
+           <div class="col-md-4 col-sm-4 ">
+              <p class="_small-bold">Joueur 3</p>
+              <div class="md-form">
+                  <input mdbInputDirective type="text" id="input2" class="form-control" formControlName="pseudo3" required>
+                  <label for="form1" class="">Pseudo joueur 3</label>
+              </div>
+             </div>
+      </div>
+      <div class="row section-two">
+          <div class="col-md-6 col-sm-6">
+              <div class="md-form">
+                  <input mdbInputDirective type="number" id="input3" class="form-control" max="20" formControlName="numberMatches" required>
+                  <label for="form1" class="">Nombre allumettes</label>
+              </div>
+
+          </div>
+          <div class=" col-md-5 col-sm-5">
+              <button mdbBtn type="submit" color="mdb-color" [disabled]="!formGame.valid" mdbWavesEffect>Commencer</button>
+          </div>
+      </div>
+     </form> 
+  </div>
+  <div class="content content-two" *ngIf="showGame">
+       <p *ngIf="this.matchers.rest > 0" class="_small-bold" [ngStyle] = "player2.tower ? {'color' : '#63769d73'} :{'color' : 'rgb(225, 193, 138)'} ">
+             Tour : {{(player1 && player1.tower && player1.tower === true) ? player1.name :
+                      (player2 && player2.tower && player2.tower === true) ? player2.name : 
+                      player3.name}}</p>
+
+       <ul class="list-imgs">
+         <li *ngFor ="let match of numbers ; let i=index ">
+           <img 
+            (mouseover)="hoveIn($event)"
+            (click)="selectMatchers(i)"
+            [attr.index]="i"
+            [src]=" (i <= getMatcherCurrent() && player1.tower === true)?  '../assets/icons/p1.png ':
+                    (i <= getMatcherCurrent() && player2.tower === true) ? '../assets/icons/p2.png ' :
+                    (i <= getMatcherCurrent() && player3.tower === true)?  '../assets/icons/p1.png ' :
+                    '../assets/icons/match-black.png'">
+         </li>
+           
+       </ul>
+       <div class="alert-winner" *ngIf="this.matchers.rest ===0">
+           <p>{{getWinner()}} a gagné(e)</p>
+          
+       </div>
+       <div class="_bottom">
+          <button mdbBtn type="submit" class="back" color="mdb-color" (click)="reloadGame()" mdbWavesEffect>Rejouer</button>
+       </div>
+
+  </div>
+
+</div>

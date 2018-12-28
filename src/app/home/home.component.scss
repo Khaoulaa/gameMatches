@@ -1,0 +1,48 @@
+.section-one{
+    justify-content: space-between;
+    div.col-md-4:nth-child(2n)
+    {
+        background-color: #63769d73;
+        border-radius: 5px;
+        padding: 15px
+       
+    }
+    div.col-md-4:nth-child(2n+1)
+    {
+        background-color: #fde9c8;
+        border-radius: 5px;
+        padding: 15px
+    }
+}
+.section-two{
+    align-items: center;
+    background-color: #cccccc73;
+    margin-top: 15px;
+}
+.content-two{
+    .list-imgs{
+        list-style-type: none;
+        li{
+            float: left;
+            img {
+                width: 66px;
+                padding-bottom: 6px;
+            }
+        }
+        
+    }
+    .alert-winner{
+        padding: 30px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    border: 2px solid
+    }
+    ._bottom{
+        text-align: center;
+        .back{
+            margin-top: 90px;
+        }
+    }
+    
+}
