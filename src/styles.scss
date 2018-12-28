@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    display: flex;
+    justify-content: center;
+    header{
+        text-align: center;
+        padding: 50px 25px 0px 20px;
+    }
+    .container{
+        @media (min-width: 992px){
+            width: 700px
+        }
+       ;
+        @media (min-width: 768px){
+            width: 500px;
+
+        }
+        @media (max-width: 575px){
+            width: 400px;
+
+        }
+       
+        .content{
+            padding-top: 50px;
+        }
+
+        ._bold{
+            font-size: 17px;
+            font-weight: 500;
+        }
+        ._small-bold{
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+}
